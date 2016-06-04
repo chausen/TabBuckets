@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<!-- Document description -->
+<html lang="en">
+  <head>
+    <title>TabBuckets Popup</title>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="popup.js"></script>
+    <style>
+      body {
+        background-color: #DDDDDD;
+      }
+
+      h1 {
+        color: #7777EE;
+      }
+      
+      button {
+        display: block;
+        width: 100%;
+        font-size: 1.25em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TabBuckets</h1>
+    <button id="save">Save Tabs</button>
+    <button id="load">Open Tabs</button>
+    <button id="clean">Clean Tabs</button>        
+    <button id="help">Help</button>    
+  </body>
+</html>
+

@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+
+    "name": "TabBuckets",
+    "description": "This extension allows you to save windows of tabs. Quickly close windows with multiple tabs, and restored them later.",
+    "icons": { "16": "icons/icon_16.png", "24": "icons/icon_24.png", "32": "icons/icon_32.png" },
+    "version": "1.0",
+
+    "browser_action": {
+	"default_icon": "icons/icon_32.png",
+	"default_popup": "popup.html"
+    },
+    "permissions": [
+	"activeTab",
+	"tabs",
+	"storage"
+    ]
+}
