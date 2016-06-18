@@ -21,10 +21,10 @@ function getTabUrls(callback) {
 
     // populate a new array using the URLs of the tabs in the queried array
     chrome.tabs.query(queryInfo, function(tabs) {
-	var tabUrls = new Array(tabs.length);
+	var tabUrls = []
 	tabs.forEach(function(currentValue, index, tabs) {
-	    tabURLS[index] = currentValue.url;
-	    console.log(tabURLS[index]);
+	    tabUrls.push(currentValue.url);
+	    console.log("URL" + index + " " + tabUrls[index]);
 	});
 
 	// return the array of tab URLs
@@ -43,7 +43,7 @@ function checkForDuplicateName(name, callback) {
     // Retrieve all key names in local storage
     chrome.storage.sync.get(null, function(allValues) {
 	var allKeys = Object.keys(allValues);
-	for (int i = 0; i < allKeys.length(); ++i) {
+	for (var i = 0; i < allKeys.length(); ++i) {
 	    if (name == allKeys[i]) {
 		callback(allKeys[i]);
 	    }
@@ -53,26 +53,32 @@ function checkForDuplicateName(name, callback) {
 }
 
 // Create event listener for the "Save Tabs" button
-$( "#save" ).click( function() {
-    var bucketName = prompt("Please enter the name for your Bucket", "New Bucket");
-    if (!bucketName) {
-	console.log('Error: Bucket name cannot be blank.');
-	return;
-    }
+$(document).ready(function() {
+    $( "#save" ).click( function(event) {
 
-    // while there exists a bucketName that matches the desired bucketName
-    // in chrome local storage, append integer i to bucketName
-    /*
-    var i = 0;
-    while (checkForDuplicateName(bucketName, function() {
-	bucketName = bucketName + i;
-	++i;
-    })				
-    */
-    
-    getTabUrls(function(tabUrls) {
+	console.log("You clicked save!");
 	
-    });
+	var bucketName = prompt("Please enter the name for your Bucket", "New Bucket");
+	
+	if (!bucketName) {
+            console.log('Error: Please enter a name for your bucket.');
+            return;
+	}
+	
+	getTabUrls(function(tabUrls) {
+	    
+	});
+
+	// while there exists a bucketName that matches the desired bucketName
+	// in chrome local storage, append integer i to bucketName
+	/*
+	  var i = 0;
+	  while (checkForDuplicateName(bucketName, function() {
+	  bucketName = bucketName + i;
+	  ++i;
+	  })				
+	*/
+    });   
 });
 
 
@@ -84,5 +90,4 @@ $( "#save" ).click( function() {
 
 // Create event listener for the "Help" button
 // var helpButton = $( "#help" );
-
 
